@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import moment from 'moment';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { grpahCMSImageLoader } from '../util';
 
@@ -14,6 +14,7 @@ const PostCard = ({ post }) => {
 					loader={grpahCMSImageLoader}
 					src={post?.featuredImage?.url}
 					alt={post?.title}
+					priority="false"
 					layout="fill"
 					className="relative overflow-hidden h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"
 				/>)}
@@ -30,6 +31,7 @@ const PostCard = ({ post }) => {
 						loader={grpahCMSImageLoader}
 						src={post?.author?.photo?.url}
 						alt={post?.author?.name}
+						priority="false"
 						height="30px"
 						width="30px"
 						className="align-middle rounded-full"

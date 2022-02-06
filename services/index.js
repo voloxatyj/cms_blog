@@ -2,7 +2,7 @@ import { request, gql } from 'graphql-request';
 import { next_public_graphcms_endpoint } from '../configs/config';
 
 export const getPosts = async () => {
-	const query = await gql`
+	const query = gql`
 		query MyQuery {
 			postsConnection {
 				edges {
@@ -29,9 +29,54 @@ export const getPosts = async () => {
 					}
 				}
 			}
-		}`
+		}
+	`;
 
-	const results = await request(next_public_graphcms_endpoint, query);
+	const response = await request(next_public_graphcms_endpoint, query);
 
-	return results || [];
+	return response?.postsConnection?.edges;
+};
+
+export const getRecentPosts = async () => {
+	const query = gql`
+		query getRecentPosts() {
+			posts(
+				orderBy: createdAt_ASC
+				last: 3
+			) {
+				title
+				featuredImage {
+					url
+				}
+				createdAt
+				slug
+			}
+		}
+	`;
+
+	const response = await request(next_public_graphcms_endpoint, query);
+
+	return response?.posts;
+};
+
+export const getSimilarPosts = async (categories, slug) => {
+	const query = gql`
+		query GetPostDetails($slug: String!, $categories: [String!]) {
+			posts(
+				where: { slug_not: $slug, AND: { categories_some: { slug_in: $categories } } }
+				last: 3
+			) {
+        title
+        featuredImage {
+          url
+        }
+        createdAt
+        slug
+      }
+    }
+  `;
+	
+  const result = await request(graphqlAPI, query, { slug, categories });
+
+  return result.posts;
 }

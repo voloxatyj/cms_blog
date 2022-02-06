@@ -25,7 +25,7 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const { postsConnection: { edges: posts } } = (await getPosts()) || [];
+  const posts = (await getPosts()) || [];
 
   return {
     props: { posts }
