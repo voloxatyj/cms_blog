@@ -95,3 +95,39 @@ export const getCategories = async () => {
 
   return response?.categories;
 };
+
+export const getPostDetails = async (slug) => {
+	const query = gql`
+		query getPostDetails($slug: String!) {
+			post(where: { slug: $slug }) {
+
+				author {
+					bio
+					id
+					name
+					photo {
+						url
+					}
+				}
+				slug
+				title
+				createdAt
+				excerpt
+				featuredImage {
+					url
+				}
+				categories {
+					name
+					slug
+				}
+				content {
+					raw
+				}
+			}
+		}
+	`;
+
+	const response = await request(next_public_graphcms_endpoint, query, { slug });
+
+	return response?.post;
+};

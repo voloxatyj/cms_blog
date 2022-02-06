@@ -22,7 +22,7 @@ export default function Home({ posts }) {
       </div>
     </div>
   )
-}
+};
 
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
@@ -30,4 +30,4 @@ export async function getStaticProps() {
   return {
     props: { posts }
   }
-}
+};
