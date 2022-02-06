@@ -5,4 +5,4 @@ const dev = process.env.NODE_ENV !== 'production';
 
 config.server = 'http://localhost:3000' || 'https://your_deployment.server.com';
 
-module.exports.config = config;
+module.exports = config;

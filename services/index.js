@@ -2,7 +2,7 @@ import { request, gql } from 'graphql-request';
 import { next_public_graphcms_endpoint } from '../configs/config';
 
 export const getPosts = async () => {
-	const query = gql`
+	const query = await gql`
 		query MyQuery {
 			postsConnection {
 				edges {
@@ -11,6 +11,9 @@ export const getPosts = async () => {
 							bio
 							id
 							name
+							photo {
+                url
+              }
 						}
 						slug
 						title
@@ -28,9 +31,7 @@ export const getPosts = async () => {
 			}
 		}`
 
-	// TODO
-	/* need to figure out why I got error from GraphCMS */	
-	// const results = await request(next_public_graphcms_endpoint, query);
+	const results = await request(next_public_graphcms_endpoint, query);
 
-	return [];
+	return results || [];
 }
