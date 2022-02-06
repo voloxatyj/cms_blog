@@ -75,8 +75,23 @@ export const getSimilarPosts = async (categories, slug) => {
       }
     }
   `;
-	
-  const result = await request(graphqlAPI, query, { slug, categories });
 
-  return result.posts;
-}
+  const response = await request(next_public_graphcms_endpoint, query, { categories, slug });
+
+  return response?.posts;
+};
+
+export const getCategories = async () => {
+	const query = gql`
+    query GetGategories {
+        categories {
+          name
+          slug
+        }
+    }
+  `;
+
+	const response = await request(next_public_graphcms_endpoint, query);
+
+  return response?.categories;
+};
