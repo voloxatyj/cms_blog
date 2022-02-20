@@ -1,4 +1,8 @@
-SPA with simple ability to create Posts and Comment them wroted on ReactJS and NextJS, and with helping GraphQLCMS as DB. For styling I use Tailwind CSS.
+# SPA with simple ability to create Posts and Comment them wroted on ReactJS and NextJS 
+# and with helping GraphQLCMS as DB. 
+# For styling I use Tailwind CSS.
+# For production I use Percel
+# https://cms-blog-bice.vercel.app/
 
 # Next.js + Tailwind CSS Example
 
