@@ -1,3 +1,5 @@
+SPA with simple ability to create Posts and Comment them wroted on ReactJS and NextJS, and with helping GraphQLCMS as DB. For styling I use Tailwind CSS.
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
